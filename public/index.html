@@ -1,1 +1,27 @@
-Well hello there!
+<!DOCTYPE html>
+<html ng-app="PlannerApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Daily Planner</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="530194881371-6uk5fahj8dugsgqhlcu21t5g0p9skq6b.apps.googleusercontent.com">
+    <script type="text/javascript" src="js/google.js"></script>
+
+    	<base href="/">
+  </head>
+  <body ng-controller="Index as index">
+    <nav>
+      <ul class="home-ul">
+        <li class="home-li"><div class="g-signin2" data-onsuccess="onSignIn"></div></li>
+        <li class="home-li"><a href="#" onclick="signOut();">Sign out</a></li>
+      </ul>
+    </nav>
+
+    <main ng-view id="body"></main>
+    </script>
+  </body>
+</html>

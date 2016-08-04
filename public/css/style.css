@@ -1,0 +1,29 @@
+.home-ul {
+  list-style: none;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.home-li {
+  display: inline-block;
+  padding: 0 2em;
+}
+
+nav {
+  min-width: 450px;
+  height:1em;
+  text-align: center;
+  position: fixed;
+  /*background: #F0F0F0;*/
+  width:100%;
+  top:0;
+  transition: top 0.2s ease-in-out;
+  padding: 2em;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  z-index: 100;
+}
+
+#body {
+  padding: 5em;
+}
