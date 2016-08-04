@@ -1,0 +1,24 @@
+{
+  "name": "project-4-planner",
+  "version": "1.0.0",
+  "description": "Planner app using MEAN stack",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arcdeamonofire/project-4-Planner-MEANstack.git"
+  },
+  "author": "Samuel Weisse",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Arcdeamonofire/project-4-Planner-MEANstack/issues"
+  },
+  "homepage": "https://github.com/Arcdeamonofire/project-4-Planner-MEANstack#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongoose": "^4.5.8"
+  }
+}
