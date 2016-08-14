@@ -1,0 +1,31 @@
+<section id="users-section">
+	<div class="container">
+
+		<div class="inline-block">
+			<div id="users-edit-div">
+				<a class="users-edit-text block-center link" href="#">Edit User Info</a>
+			</div>
+		</div>
+		<div id="users-heading-div">
+			<h1 class="inline-block" id="users-heading">Welcome, <span class="orange uppercase">{{user.firstName}}!</span></h1>
+		</div>
+
+		<br>
+
+		<!-- Events and Lists will populate here. -->
+		<div class="users-deck-div">
+			<h3>Your Events</h3>
+			<a href="/event/new">Add a New Event</a>
+			<ul>
+				{{user.events}}
+			</ul>
+			<br>
+			<h3>Your Lists</h3>
+			<a href="/list/new">Add a New List</a>
+			<ul>
+				{{user.lists}}
+			</ul>
+		</div>
+
+	</div>
+</section>
