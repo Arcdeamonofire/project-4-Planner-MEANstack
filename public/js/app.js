@@ -22,16 +22,27 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 		controller: 'LogOut',
 		controllerAs: 'logout'
 	}).when('/event/new', {
-		templateUrl: 'partials/newEvent.html'
+		templateUrl: 'partials/events/newEvent.html',
+		controller: 'Index',
+		controllerAs: 'index'
 	}).when('/list/new', {
-		templateUrl: 'partials/newList.html'
+		templateUrl: 'partials/lists/newList.html',
+		controller: 'Index',
+		controllerAs: 'index'
+	}).when('/event/:id', {
+		templateUrl: 'partials/events/showEvent.html',
+		controller: 'Event',
+		controllerAs: 'event'
+	}).when('/list/:id', {
+		templateUrl: 'partials/lists/showList.html',
+		controller: 'List',
+		controllerAs: 'list'
 	});
 }]);
 
 app.controller('Index', ['$http', '$scope','$location', function($http, $scope,$location) {
 	console.log('this is the index page');
 	var index = this;
-
 	//Controls nav bar and front-end user view: True = no user, False = user
 	$scope.noUser = true;
 
@@ -39,7 +50,7 @@ app.controller('Index', ['$http', '$scope','$location', function($http, $scope,$
 	$scope.$on('getUser', function(event, data){
 		index.user = data.userLogged;
 		$scope.user = index.user;
-		console.log($scope.user);
+		// console.log($scope.user);
 		if ($scope.user.userName !== undefined) { //nav bar links, w/o final suffix = bad PW return user profile
 			index.navVar = 'WELCOME, ' + index.user.userName;
 			index.navLink = '/users/{{index.user._id}}';
@@ -50,13 +61,13 @@ app.controller('Index', ['$http', '$scope','$location', function($http, $scope,$
 	this.newEvent = function(){
 		$http({
 			method:'POST',
-			url: '',
+			url: '/event/new',
 			data: this.form
 		}).then(function(result){
-			console.log('added card');
-			console.log(result.data);
+			console.log('added event');
+			console.log(result);
 			console.log($scope.user)
-			$scope.user.deck = result.data;
+			$scope.user.events = result.data;
 			$location.url('/users/'+$scope.user._id);
 		})
 	};
@@ -64,16 +75,45 @@ app.controller('Index', ['$http', '$scope','$location', function($http, $scope,$
 	this.newList = function(){
 		$http({
 			method:'POST',
-			url: '',
+			url: '/list/new',
 			data: this.form
 		}).then(function(result){
-			console.log('added card');
-			console.log(result.data);
+			console.log('added list');
+			console.log(result);
 			console.log($scope.user)
-			$scope.user.deck = result.data;
+			$scope.user.lists = result.data;
 			$location.url('/users/'+$scope.user._id);
 		})
 	};
+
+}]);
+
+app.controller('List', ['$http', '$scope','$location','$routeParams', function($http, $scope,$location,$routeParams) {
+	// console.log($scope.user);
+	// console.log($routeParams);
+	var list = this;
+	list.id = $routeParams.id
+	console.log(this.id);
+
+	this.newListItem = function(){
+		$http({
+			method:'POST',
+			url: '/list/newItem',
+			data: [this.form,$scope.user._id,list.id]
+		}).then(function(result){
+			console.log('added item');
+			console.log(result.data);
+			// console.log($scope.user)
+			$scope.user.lists[list.id] = result.data;
+			$location.url('/list/'+list.id);
+		});
+	};
+}]);
+
+app.controller('Event', ['$http', '$scope','$location','$routeParams', function($http, $scope,$location,$routeParams) {
+	var event = this;
+	event.id = $routeParams.id
+	console.log(event.id)
 }]);
 
 //Sign Up
@@ -130,6 +170,7 @@ app.controller('LogIn', ['$http', '$scope', '$location', '$route', function($htt
 					userLogged: userLogged
 				});
 				console.log('redirecting to your user page');
+				// console.log(userLogged)
 				$location.url('/users/'+userLogged._id);
 			}else {
 				console.log('you typed the wrong password buddy')

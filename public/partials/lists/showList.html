@@ -1,0 +1,13 @@
+<a href="/users/{{user._id}}">Back</a>
+<br>
+<h1>{{user.lists[list.id].name}}</h1>
+
+<form ng-submit="list.newListItem()">
+  <!-- <input type="text" ng-value="{{user._id}}" ng-model="list.form.user">
+  <input type="text" ng-value="{{list.id}}" ng-model="list.form.list"> -->
+  <input type="text" placeholder="New List Item" ng-model="list.form.entries">
+  <input id="login-button-signup" type="submit" value="NEW ITEM">
+</form>
+<ul>
+  <li ng-repeat="entry in user.lists[list.id].entries">{{entry}}</li>
+</ul>

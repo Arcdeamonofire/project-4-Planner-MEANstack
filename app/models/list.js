@@ -2,9 +2,8 @@ var mongoose = require('mongoose');
 
 
 var listSchema = mongoose.Schema({
-    user: String,
-    body: String,
-    post: String
+    name: String,
+    entries: []
 
 })
 

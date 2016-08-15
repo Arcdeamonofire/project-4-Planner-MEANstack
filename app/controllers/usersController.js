@@ -10,6 +10,7 @@ var User = require('../models/users');
 router.get('/users/:user', function(req, res){
 	console.log(req.params.user);
 	User.findById(req.params.user, function(err, user) {
+      console.log(user)
     	res.send(user)
   	})
 })
@@ -27,6 +28,14 @@ router.post('/login', function(req, res){
 			res.send('failed');
 		}
 	});
+});
+
+//Log Out route and session is destroyed
+router.post('/logout', function(req, res) {
+	req.session.destroy(function(err) {
+		console.log('user session destroyed and logged out')
+		res.redirect('/')
+	})
 });
 
 //Sign Up route -> a push User.create
@@ -47,30 +56,6 @@ router.post('/', function(req, res){
 		}
 		// console.log(req.session.userName);
 	});
-});
-
-//add deck to user's deck
-// router.post('/deck', function(req,res){
-// 	// console.log(req.session.userName);
-// 	if(req.session.userName !== undefined){
-// 		User.findOne({userName : req.session.userName}, function(err, foundUser){
-// 			//console.log(req.body);
-// 			// console.log(foundUser);
-// 			foundUser.deck.push(req.body)
-// 			foundUser.save(function(err){
-// 				console.log('I have added the requested spell to your spell book Planeswalker');
-// 			});
-// 			res.send(foundUser.deck);
-// 		})
-// 	}
-// })
-
-//Log Out route and session is destroyed
-router.post('/logout', function(req, res) {
-	req.session.destroy(function(err) {
-		console.log('user session destroyed and logged out')
-		res.redirect('/')
-	})
 });
 
 module.exports = router;

@@ -77,6 +77,10 @@ app.use(express.static('public'));
 //controller info here!
 var usersController = require('./app/controllers/usersController');
 app.use('/users', usersController);
+var eventsController = require('./app/controllers/eventsController');
+app.use('/event', eventsController);
+var listsController = require('./app/controllers/listsController');
+app.use('/list', listsController);
 
 // app.get('/auth/google',
 //   passport.authenticate('google', { scope: ['https://www.googleapis.com/auth/plus.login'] }));
@@ -87,8 +91,6 @@ app.use('/users', usersController);
 //     console.log("This is a check to see if this is showing: "+req.account);
 //     // res.redirect('/');
 //   });
-
-
 
 //Catch all redirect
 app.get('*', function(req, res){

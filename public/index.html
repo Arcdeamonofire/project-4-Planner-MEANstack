@@ -20,7 +20,7 @@
     <nav>
       <ul class="home-ul">
         <li class="home-li"><a href="/">HOME</a></li>
-        <li class="home-li"><a class="orange link" id="home-home-link" href="{{index.navLink}}">{{index.navVar}}</a></li>
+        <li class="home-li"><a class="orange link" id="home-home-link" href="/users/{{user._id}}">{{index.navVar}}</a></li>
         <li ng-show="noUser"class="home-li"><a class="link home-link" href="/signup">SIGN UP</a></li>
         <li ng-show="noUser" class="home-li"><a class="link home-link" href="/login">LOG IN</a></li>
         <li class="home-li"><a href="#">SCHEDULE</a></li>
@@ -30,7 +30,6 @@
         <a href="#" onclick="signOut();">Sign out</a> -->
       </ul>
     </nav>
-    <!-- {{index.profile}} -->
     <main ng-view id="body"></main>
 
   </body>

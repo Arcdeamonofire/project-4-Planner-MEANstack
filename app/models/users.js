@@ -1,4 +1,6 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose'),
+		eventSchema = require('./event').schema;
+		listSchema = require('./list').schema;
 
 var userSchema = mongoose.Schema({
 	userName: { type: String, unique: true },
