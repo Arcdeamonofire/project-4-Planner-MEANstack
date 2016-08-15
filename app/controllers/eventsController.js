@@ -21,6 +21,19 @@ router.post('/new', function(req,res){
 			res.send(foundUser.events);
 		})
 	}
-})
+});
+
+router.delete('/:id', function(req, res) {
+  // console.log(req.session.userName)
+	User.findOne({ userName : req.session.userName }, function(err, user) {
+    // console.log(user)
+		user.events.splice(req.params.id, 1)
+    user.save(function(err){
+      console.log('removed event');
+    });
+    console.log(user);
+    res.send(user.events);
+	});
+});
 
 module.exports = router;

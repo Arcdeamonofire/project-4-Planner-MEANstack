@@ -1,6 +1,7 @@
 <a href="/users/{{user._id}}">Back</a>
 <br>
 <h1>{{user.lists[list.id].name}}</h1>
+<button ng-click="list.delete()">Delete</button>
 
 <form ng-submit="list.newListItem()">
   <!-- <input type="text" ng-value="{{user._id}}" ng-model="list.form.user">
@@ -9,5 +10,5 @@
   <input id="login-button-signup" type="submit" value="NEW ITEM">
 </form>
 <ul>
-  <li ng-repeat="entry in user.lists[list.id].entries">{{entry}}</li>
+  <li ng-repeat="entry in user.lists[list.id].entries">{{entry}}<button ng-click="list.deleteEntry($index)">Delete</button></li>
 </ul>

@@ -1,6 +1,13 @@
+<script>
+$( function() {
+  $( "#datepicker" ).datepicker();
+} );
+</script>
+<a href="/users/{{user._id}}">Back</a><br>
+
 New Event Form:
 <form ng-submit="index.newEvent()">
-  <input type="text" placeholder="Date" ng-model="index.form.date" />
+  Date: <input id="datepicker" type="text" ng-model="index.form.date" /><br>
   <textarea placeholder="Description" ng-model="index.form.description"></textarea>
   <input id="login-button-signup" type="submit" value="Add Event" />
 </form>

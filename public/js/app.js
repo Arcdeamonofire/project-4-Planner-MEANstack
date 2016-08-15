@@ -108,12 +108,51 @@ app.controller('List', ['$http', '$scope','$location','$routeParams', function($
 			$location.url('/list/'+list.id);
 		});
 	};
+
+	this.delete = function() {
+		$http({
+			method: 'DELETE',
+			url: '/list/' + $routeParams.id
+		}).then(function(result) {
+			console.log(result.data)
+			console.log()
+			$scope.user.lists = result.data;
+			$location.url('/users/'+$scope.user._id);
+		})
+	}
+
+	this.deleteEntry = function(entryIndex) {
+		$http({
+			method: 'DELETE',
+			url: '/list/'+$routeParams.id+'/entry/'+entryIndex
+		}).then(function(result) {
+			console.log(result.data)
+			console.log()
+			$scope.user.lists[list.id] = result.data;
+			$location.url('/list/'+list.id);
+		})
+	}
+
 }]);
+
+
 
 app.controller('Event', ['$http', '$scope','$location','$routeParams', function($http, $scope,$location,$routeParams) {
 	var event = this;
 	event.id = $routeParams.id
 	console.log(event.id)
+
+	event.delete = function() {
+		$http({
+			method: 'DELETE',
+			url: '/event/' + $routeParams.id
+		}).then(function(result) {
+			console.log(result.data)
+			console.log()
+			$scope.user.events = result.data;
+			$location.url('/users/'+$scope.user._id);
+		})
+	}
 }]);
 
 //Sign Up
