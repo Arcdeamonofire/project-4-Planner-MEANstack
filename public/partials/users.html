@@ -16,16 +16,14 @@
 		<div class="users-deck-div">
 			<h3>Your Events</h3>
 			<a href="/event/new">Add a New Event</a>
-			<ul>
+			<ul class="user">
 				<li ng-repeat="event in user.events"><a href="/event/{{$index}}">{{event.date}}--{{event.description}}</a></li>
 			</ul>
 			<br>
 			<h3>Your Lists</h3>
 			<a href="/list/new">Add a New List</a>
-			<ul>
-				<ul>
+			<ul class="user">
 					<li ng-repeat="list in user.lists"><a href="/list/{{$index}}">{{list.name}}</a></li>
-				</ul>
 			</ul>
 		</div>
 
