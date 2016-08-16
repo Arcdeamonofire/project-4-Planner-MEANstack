@@ -1,13 +1,14 @@
 html{
-  background-color: #F0E7CA;
+  background-color: #543D99;
   text-align: center;
   font-family: sans-serif;
+  color:#FFB440;
 }
 body{
   min-width: 500px
 }
 a{
-  color:black;
+  color:#CC6C14;
 }
 .home-ul {
   list-style: none;
@@ -26,7 +27,7 @@ nav {
   height:1em;
   text-align: center;
   position: fixed;
-  background: #B4AF9F;
+  background: #4314CC;
   width:100%;
   top:0;
   transition: top 0.2s ease-in-out;
